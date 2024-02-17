@@ -23,7 +23,7 @@ enum layers {
     MEDIA,
 };
 
-#define VERSION_STRING "  Henrik's rev0.21\n\n"
+#define VERSION_STRING "  Henrik's rev0.22\n\n"
 
 // Aliases for readability
 #define CTL_SEMI MT(MOD_RCTL, KC_SCLN)
@@ -32,13 +32,10 @@ enum layers {
 #define LSFT_SPC MT(MOD_LSFT, KC_SPC)
 #define LSFT_BS MT(MOD_LSFT, KC_BSPC)
 #define LALT_F MT(MOD_LALT, KC_F)
-#define HYPR_ESC HYPR_T(KC_ESC)
-#define SWE_A LT(SWE, KC_A)
 #define SWE_S LT(SWE, KC_S)
 #define SPC_SYM  LT(SYMBOLS, KC_SPC)
 #define BS_NUM   LT(NUMBERS, KC_BSPC)
 #define M_LBRC LT(MEDIA, KC_LBRC)
-#define SWE_TAB LT(SWE, KC_TAB)
 
 enum custom_keycodes {
   KC_ARRO = SAFE_RANGE,
@@ -49,24 +46,23 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
- * TODO: ESC/SHIFT not really needed, and generally too many esc all over...
  * Layer 1: QWERTY
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * | Tab/Å  |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |Media [ |
+ * | Tab    |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |Media [ |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |HYP/ESC |Ctrl_A|SWE_S |   D  |ALT/F |   G  |                              |   H  |   J  |   K  |   L  |Ctrl;:|   ' "  |
+ * |  ESC   |Ctrl_A|SWE_S |   D  |ALT/F |   G  |                              |   H  |   J  |   K  |   L  |Ctrl;:|   ' "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |  LCtl  |   Z  |   X  |   C  |   V  |   B  | Tab/Å| ESC  |  | - _  | =  + |   N  |   M  | ,  < | . >  | /  ? |   ?   |
+ * |  LCtl  |   Z  |   X  |   C  |   V  |   B  | Tab  | ESC  |  | - _  | =  + |   N  |   M  | ,  < | . >  | /  ? |   ?   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        | LCtl | LAlt | LGUI |  BS  |  BS  |  | Space| Space| RGUI | RAlt | RCtl |
- *                        |      |      |      | NUM  |LSHFT |  |   ?  | SYM  |      |      |      |
+ *                        |      |      |      | NUM  |LSHFT |  |      | SYM  |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
   [QWERTY] = LAYOUT(
-   SWE_TAB , KC_Q ,  KC_W   ,  KC_E   ,   KC_R ,   KC_T ,                                                 KC_Y,    KC_U   , KC_I   , KC_O  , KC_P   , M_LBRC,
-   HYPR_ESC, CTL_A,  SWE_S  ,  KC_D   ,   LALT_F,  KC_G ,                                                 KC_H,    KC_J   , KC_K   , KC_L  , CTL_SEMI,KC_QUOT,
-   KC_LCTL,  KC_Z ,  KC_X   ,  KC_C   ,   KC_V ,   KC_B ,    SWE_TAB ,  KC_ESC ,      KC_MINS , KC_EQUAL, KC_N,    KC_M   , KC_COMM, KC_DOT, KC_SLSH, KC_ENT ,
+   KC_TAB , KC_Q ,  KC_W   ,  KC_E   ,   KC_R ,   KC_T ,                                                 KC_Y,    KC_U   , KC_I   , KC_O  , KC_P   , M_LBRC,
+   KC_ESC , CTL_A,  SWE_S  ,  KC_D   ,   LALT_F,  KC_G ,                                                 KC_H,    KC_J   , KC_K   , KC_L  , CTL_SEMI,KC_QUOT,
+   KC_LCTL, KC_Z ,  KC_X   ,  KC_C   ,   KC_V ,   KC_B ,     KC_TAB ,  KC_ESC ,      KC_MINS , KC_EQUAL, KC_N,    KC_M   , KC_COMM, KC_DOT, KC_SLSH, KC_ENT ,
                                KC_LCTL,   KC_LALT, KC_LGUI,  BS_NUM  ,  LSFT_BS,      LSFT_SPC, SPC_SYM,  KC_RGUI ,KC_RALT, KC_RCTL
   ),
 
